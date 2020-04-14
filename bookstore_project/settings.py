@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # new apps
-    'users.apps.UsersConfig', # user accounts app
+    # third-party apps
+    'crispy_forms', # crispy forms app
 
+    # local apps
+    'users.apps.UsersConfig', # user accounts app
     'pages.apps.PagesConfig', # static pages app
 
 
@@ -138,7 +141,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # static files for local developement
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # static files for production developement
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+] # decides how to look for static files directories
 
 
 
@@ -146,3 +154,6 @@ AUTH_USER_MODEL = 'users.CustomUser' # to ensure project uses CustomerUser inste
 
 LOGIN_REDIRECT_URL = 'home' # redirect to home page after log in
 LOGOUT_REDIRECT_URL = 'home'  # redirect to home page after log out
+
+
+CRISPY_TEMPLATES_PACK = 'bootstrap4' # crispy forms to format default django forms

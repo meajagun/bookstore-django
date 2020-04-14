@@ -4,7 +4,7 @@ from django.urls import reverse, resolve
 
 
 from .forms import CustomUserCreationForm
-from .views import SignUpPageView
+from .views import SignupPageView
 
 
 # Create your tests here.
@@ -57,4 +57,4 @@ class SignupPageTests(TestCase):
 
     def test_signup_view(self):
         view = resolve('/accounts/signup/')
-        self.assertEqual(view.func.__name__, SignUpPageView.as_view().__name__)
+        self.assertEqual(view.func.__name__, SignupPageView.as_view().__name__)
