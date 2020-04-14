@@ -143,3 +143,6 @@ STATIC_URL = '/static/'
 
 
 AUTH_USER_MODEL = 'users.CustomUser' # to ensure project uses CustomerUser instead of default user model
+
+LOGIN_REDIRECT_URL = 'home' # redirect to home page after log in
+LOGOUT_REDIRECT_URL = 'home'  # redirect to home page after log out
