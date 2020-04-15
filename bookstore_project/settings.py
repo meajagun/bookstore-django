@@ -38,9 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # added
+    'django.contrib.sites', # django-allauth app
+
     # new apps
     # third-party apps
     'crispy_forms', # crispy forms app
+    'allauth', # django-allauth app
+    'allauth.account', # # add django-allauth to CustomUser accounts app
+    #'allauth.socialaccount',
 
     # local apps
     'users.apps.UsersConfig', # user accounts app
@@ -152,8 +158,30 @@ STATICFILES_FINDERS = [
 
 AUTH_USER_MODEL = 'users.CustomUser' # to ensure project uses CustomerUser instead of default user model
 
-LOGIN_REDIRECT_URL = 'home' # redirect to home page after log in
-LOGOUT_REDIRECT_URL = 'home'  # redirect to home page after log out
-
 
 CRISPY_TEMPLATES_PACK = 'bootstrap4' # crispy forms to format default django forms
+
+
+# allauth - config
+LOGIN_REDIRECT_URL = 'home'  # redirect to home page after log in
+# LOGOUT_REDIRECT_URL = 'home'  # redirect to home page after log out
+ACCOUNT_LOGOUT_REDIRECT = 'home'  # allauth overrides logout
+
+SITE_ID = 1 # added allauth to project website
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # used to authenticate a user
+    'allauth.account.auth_backends.AuthenticationBackend',  # used to authenticate users via backend
+)
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # send emails
+
+ACCOUNT_SESSION_REMEMBER = True  # set remember user after login
+
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True # enable/disable enter signup password twice
+
+ACCOUNT_USERNAME_REQUIRED = False  # option to decide wether to login with username or email
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # ensures email is used to login and not userame
+ACCOUNT_EMAIL_REQUIRED = True  # option wheter email is required during registration
+ACCOUNT_UNIQUE_EMAIL = True  # makesure email added is unique per user
