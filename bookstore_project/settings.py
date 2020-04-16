@@ -185,3 +185,5 @@ ACCOUNT_USERNAME_REQUIRED = False  # option to decide wether to login with usern
 ACCOUNT_AUTHENTICATION_METHOD = 'email'  # ensures email is used to login and not userame
 ACCOUNT_EMAIL_REQUIRED = True  # option wheter email is required during registration
 ACCOUNT_UNIQUE_EMAIL = True  # makesure email added is unique per user
+
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
