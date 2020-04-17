@@ -18,11 +18,17 @@ class Book(models.Model):
     cover = models.ImageField(upload_to="covers/", blank=True)
     #docs = models.FileField(upload_to="documents/") # used to upload other documents
 
+    class Meta:
+        permissions = [
+            ("special_status", "can read all books",),
+        ]
+    
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
-        return reverse("book_detail", kwargs={"pk": str(self.pk)})
+        #return reverse("book_detail", kwargs={"pk": str(self.pk)})
+        return reverse("book_detail", args=[str(self.id)])
     
 
 class Review(models.Model):
