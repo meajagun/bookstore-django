@@ -15,6 +15,8 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     price =  models.DecimalField(max_digits=6, decimal_places=2)
+    cover = models.ImageField(upload_to="covers/", blank=True)
+    #docs = models.FileField(upload_to="documents/") # used to upload other documents
 
     def __str__(self):
         return self.title
