@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig', # user accounts app
     'pages.apps.PagesConfig', # static pages app
     'books.apps.BooksConfig', # books app
+    'orders.apps.OrdersConfig', # ordering with stripe app
 
 
 ]
@@ -190,3 +191,7 @@ ACCOUNT_EMAIL_REQUIRED = True  # option wheter email is required during registra
 ACCOUNT_UNIQUE_EMAIL = True  # makesure email added is unique per user
 
 DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+
+# stripe conf.
+STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')

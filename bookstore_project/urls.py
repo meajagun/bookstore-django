@@ -30,4 +30,5 @@ urlpatterns = [
     # local apps
     path('', include('pages.urls')),  # pages app
     path('books/', include('books.urls')),  # books app)
+    path('orders/', include('orders.urls')), # orders with stripe app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # allows to see uploaded contents locally during development
